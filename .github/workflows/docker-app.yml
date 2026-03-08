@@ -1,0 +1,33 @@
+name: Docker App
+on:
+  - workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: docker login
+        uses: docker/login-action@v3
+        with:
+          name: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
+          registry: ghcr.io
+      - name: docker build
+        run: |
+          cd dockerFiles
+          docker build . -t myapp:v1
+      - name: docker dev push
+        run: |
+          docker tag myapp:v1 ghcr.io/vickyr16/foundone/sampleImage:v1
+          docker push ghcr.io/vickyr16/foundone/dev/sampleImage:v1
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: pull the container and run
+        run: |
+          docker pull ghcr.io/vickyr16/foundone/dev/sampleImage:v1
+          docker run -d --name myapp:v1 --expose 3000:3000 ghcr.io/vickyr16/foundone/dev/sampleImage:v1
+
