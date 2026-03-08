@@ -39,7 +39,8 @@ runs:
         id: buildID
         run: |
           port=${{inputs.port}}
-          "cd ${{inputs.docker-file-path}}"
+          "pwd
+          cd ${{inputs.docker-file-path}}"
           "if [ -n $port]; then
           docker build ${{inputs.app-name}} -p $port:$port -t ${{inputs.registry-name}}/${{inputs.app-name}}:latest
           else
