@@ -39,5 +39,5 @@ jobs:
       - name: pull the container and run
         run: |
           docker pull ghcr.io/foundone1/dev/sampleimage:v1
-          docker run -d --name myapp:v1 --expose 3000:3000 ghcr.io/foundone1/dev/sampleimage:v1
+          docker run -d --name myapp:v1 -p 3000:3000 ghcr.io/foundone1/dev/sampleimage:v1
 
