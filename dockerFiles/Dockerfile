@@ -1,5 +1,5 @@
 FROM alpine:latest
 COPY index.js package*.json /app
 RUN apk add bash npm nodejs
-RUN npm install
+RUN npm cache clean --force && npm install
 CMD ["npm","start"]
