@@ -38,7 +38,7 @@ runs:
         run: |
           port=${{inputs.port}}
           ls
-          "cd ${{inputs.docker-file-path}}"
+          "cd ./${{inputs.docker-file-path}}"
           "if [ -n $port]; then
           docker build ${{inputs.app-name}} -p $port:$port -t ${{inputs.registry-name}}/${{inputs.app-name}}:latest
           else
