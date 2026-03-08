@@ -6,6 +6,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout the repo
+        uses: actions/checkout@v4
       - name: use the built action
         uses: ./composite-docker-build-action
         with:
