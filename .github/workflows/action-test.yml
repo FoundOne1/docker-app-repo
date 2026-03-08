@@ -8,3 +8,11 @@ jobs:
     steps:
       - name: use the built action
         uses: ./composite-docker-build-action
+        with:
+          app-name: myapp1
+          registry: ghcr.io
+          registry-name: ghcr.io/foundone/dev
+          username: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
+          docker-file-path: ./dockerFiles
+          port: 3000
