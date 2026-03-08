@@ -45,7 +45,7 @@ runs:
           else
             docker build ${{inputs.app-name}} -t ${{inputs.registry-name}} 
           fi
-          echo "res=success" >> "$GITHUB_OUTPUT"
+          echo res=success >> $GITHUB_OUTPUT
           "
         if: success()
       - name: set output
