@@ -1,0 +1,10 @@
+name: test the action
+on:
+  - workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: use the built action
+        uses: ./composite-docker-build-action
