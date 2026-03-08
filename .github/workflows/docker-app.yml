@@ -20,7 +20,7 @@ jobs:
           docker build . -t myapp:v1
       - name: docker dev push
         run: |
-          docker tag myapp:v1 ghcr.io/vickyr16/foundone/sampleimage:v1
+          docker tag myapp:v1 ghcr.io/vickyr16/foundone/dev/sampleimage:v1
           docker push ghcr.io/vickyr16/foundone/dev/sampleimage:v1
   test:
     runs-on: ubuntu-latest
