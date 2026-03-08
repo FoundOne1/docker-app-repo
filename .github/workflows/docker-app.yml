@@ -28,6 +28,6 @@ jobs:
     steps:
       - name: pull the container and run
         run: |
-          docker pull ghcr.io/vickyr16/foundone/dev/sampleImage:v1
-          docker run -d --name myapp:v1 --expose 3000:3000 ghcr.io/vickyr16/foundone/dev/sampleImage:v1
+          docker pull ghcr.io/vickyr16/foundone/dev/sampleimage:v1
+          docker run -d --name myapp:v1 --expose 3000:3000 ghcr.io/vickyr16/foundone/dev/sampleimage:v1
 
