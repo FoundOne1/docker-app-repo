@@ -27,6 +27,7 @@ jobs:
           docker tag myapp:v1 ghcr.io/foundone1/dev/sampleimage:v1
           docker push ghcr.io/foundone1/dev/sampleimage:v1
   test-app:
+    needs: build
     uses: ./.github/workflows/docker-app-test.yml
   test:
     runs-on: ubuntu-latest
