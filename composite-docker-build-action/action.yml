@@ -48,5 +48,6 @@ runs:
       - name: set output
         if: success()
         run: |
+            echp "Setting up the output!"
             echo "res=success" >> "$GITHUB_OUTPUT"
         shell: bash
