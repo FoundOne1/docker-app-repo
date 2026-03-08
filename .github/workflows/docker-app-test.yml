@@ -1,0 +1,16 @@
+name: docker app test
+on:
+  - workflow_dispatch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the repo
+        uses: actions/checkout@v4
+      - name: app check
+        run: |
+          cd dockerFiles
+          npm install
+          npm start
+  
