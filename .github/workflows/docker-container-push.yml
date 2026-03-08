@@ -1,0 +1,45 @@
+name: container-build&push
+on:
+  workflow_call:
+    inputs:
+      app-name:
+        type: string
+        required: true
+      registry:
+        type: string
+        required: true
+      registry-name:
+        type: string
+        required: true
+      username:
+        type: string
+        required: true
+      password:
+        type: string
+        required: true
+      docker-file-path:
+        type: string
+        required: true
+      port:
+        type: number
+        required: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: docker-login
+        uses: docker/login-action@v4
+      - name: container build
+        run: |
+          port=${{inputs.port}}
+          "cd ${{inputs.docker-file-path}}"
+          "if [ -n $port]; then
+          docker build ${{inputs.app-name}} -p $port:$port -t ${{inputs.registry-name}}
+          else
+            docker build ${{inputs.app-name}} -t ${{inputs.registry-name}} 
+          fi
+          "
+        
