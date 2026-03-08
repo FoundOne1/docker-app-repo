@@ -1,0 +1,54 @@
+name: container-build&push
+description: its for docker build and push
+inputs:
+      app-name:
+        type: string
+        required: true
+      registry:
+        type: string
+        required: true
+      registry-name:
+        type: string
+        required: true
+      username:
+        type: string
+        required: true
+      password:
+        type: string
+        required: true
+      docker-file-path:
+        type: string
+        required: true
+      port:
+        type: number
+        required: false
+
+runs:
+  using: composite
+  steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: docker-login
+        uses: docker/login-action@v4
+        with:
+          username: ${{inputs.username}}
+          password: ${{inputs.password}}
+          registry: ${{inputs.registry}}
+      - name: container build
+        shell: bash
+        id: buildID
+        run: |
+          port=${{inputs.port}}
+          "cd ${{inputs.docker-file-path}}"
+          "if [ -n $port]; then
+          docker build ${{inputs.app-name}} -p $port:$port -t ${{inputs.registry-name}}
+          else
+            docker build ${{inputs.app-name}} -t ${{inputs.registry-name}} 
+          fi
+          echo res="success" >> $GITHUB_OUTPUT
+          "
+        if: success()
+      - name: set output
+        run: echo ${{steps.buildID.outputs.res}}
+        shell: bash
+        
