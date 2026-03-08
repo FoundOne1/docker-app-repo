@@ -1,6 +1,12 @@
 name: docker app test
 on:
-  - workflow_dispatch
+ workflow_dispatch:
+ workflow_call:
+   inputs:
+     success_msg:
+       type: string 
+       required: false
+
 
 jobs:
   test:
@@ -13,4 +19,3 @@ jobs:
           cd dockerFiles
           npm install
           npm start
-  
