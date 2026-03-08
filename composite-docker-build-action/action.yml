@@ -38,8 +38,6 @@ runs:
         id: buildID
         run: |
           port=${{inputs.port}}
-          pwd
-          ls
           "if [ -n $port]; then
           docker build ${{inputs.app-name}} -p $port:$port -t ${{inputs.registry-name}}/${{inputs.app-name}}:latest
           else
