@@ -33,13 +33,13 @@ runs:
           password: ${{inputs.password}}
           registry: ${{inputs.registry}}
       - name: container build
+        working-directory: ${{github.workspace}}/dockerFiles
         shell: bash
         id: buildID
         run: |
           port=${{inputs.port}}
           pwd
           ls
-          "cd ${{inputs.docker-file-path}}"
           "if [ -n $port]; then
           docker build ${{inputs.app-name}} -p $port:$port -t ${{inputs.registry-name}}/${{inputs.app-name}}:latest
           else
