@@ -16,5 +16,5 @@ jobs:
           registry-name: ghcr.io/foundone/dev
           username: ${{github.actor}}
           password: ${{secrets.GITHUB_TOKEN}}
-          docker-file-path: ./dockerFiles
+          docker-file-path: dockerFiles
           port: 3000
