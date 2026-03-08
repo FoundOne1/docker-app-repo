@@ -36,6 +36,8 @@ jobs:
           username: ${{github.actor}}
           password: ${{secrets.GITHUB_TOKEN}}
           registry: ghcr.io
+      - name: test the app
+        uses: ./.github/workflows/docker-app-test.yml
       - name: pull the container and run
         run: |
           docker pull ghcr.io/foundone1/dev/sampleimage:v1
