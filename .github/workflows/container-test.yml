@@ -34,7 +34,7 @@ jobs:
         uses: docker/login-action@v4
         with:
           username: ${{inputs.username}}
-          password: ${{inputs.password}}
+          password: ${{secrets.password}}
           registry: ${{inputs.registry}}
       - name: pull the image
         id: container-run
