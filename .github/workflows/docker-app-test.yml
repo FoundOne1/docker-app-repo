@@ -28,4 +28,3 @@ jobs:
          cd dockerFiles
          npm install
          npm start
-         echo $?
