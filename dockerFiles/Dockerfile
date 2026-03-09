@@ -3,5 +3,5 @@ WORKDIR /app
 COPY index.js package*.json /app
 EXPOSE 3000
 RUN apk add bash npm nodejs
-RUN npm install
-CMD ["npm","start"]
+RUN npm ci
+CMD ["npm","start:test"]
