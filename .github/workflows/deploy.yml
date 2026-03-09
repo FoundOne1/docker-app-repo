@@ -1,6 +1,10 @@
 name: deploy the app
 on:
   workflow_call:
+    inputs:
+      msg:
+        type: string
+        required: false
   workflow_dispatch:
 
 jobs:
