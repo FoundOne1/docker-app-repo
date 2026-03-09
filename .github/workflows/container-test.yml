@@ -34,7 +34,7 @@ jobs:
         uses: actions/docker-login@v4
         with:
           username: ${{inputs.username}}
-          password: ${{inputs.password}}
+          password: ${{secrets.GITHUB_TOKEN}}
           registry: ${{inputs.registry}}
       - name: pull the image
         id: container-run
