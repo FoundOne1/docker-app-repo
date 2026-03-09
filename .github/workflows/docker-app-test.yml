@@ -25,4 +25,7 @@ jobs:
        run: |
          cd dockerFiles
          npm install
-         npm start
+         timeout 30s npm start
+     - name: check the endpoint
+       run: curl -v http://localhost:3000/
+      
