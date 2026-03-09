@@ -19,7 +19,7 @@ jobs:
           tenant-id: ${{secrets.TENANT_ID}}
           subscription-id: ${{secrets.SUBSCRIPTION_ID}}
       - name: deploy the app
-        uses: azure/webapp-deploy@v3
+        uses: azure/webapps-deploy@v3
         with:
           app-name: app1-container
           images: ghcr.io/foundone1/dev/sampleimage@v2
