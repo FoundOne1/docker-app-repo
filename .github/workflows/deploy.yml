@@ -1,0 +1,12 @@
+name: deploy the app
+on:
+  - workflow_call
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: connect azure
+        uses: azure/login@v4
+        with:
+          client-id: ${{secrets}}
