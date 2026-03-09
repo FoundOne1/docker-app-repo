@@ -30,11 +30,17 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: docker login
+        uses: actions/docker-login@v4
+        with:
+          username: ${{inputs.username}}
+          password: ${{inputs.password}}
+          registry: ${{inputs.registry}}
       - name: pull the image
         id: container-run
         run: |
-          echo $GITHUB_TOKEN | docker login ${{inputs.registry}} -u ${{inputs.username}} --password-stdin
-          docker pull --name myapp:v1 ${{inputs.registry_address}}
+          docker pull ${{inputs.registry_address}}
+          docker run -d --name myapp:v1 -p 3000:3000 ${{inputs.registry_address}}
           echo "res=success" >> "$GITHUB_OUTPUTS"
     outputs:
       result: ${{steps.container-run.outputs.res}}
