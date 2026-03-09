@@ -5,6 +5,7 @@ on:
       msg:
         type: string
         required: false
+        
   workflow_dispatch:
 
 jobs:
