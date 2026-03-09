@@ -25,7 +25,10 @@ jobs:
        run: |
          cd dockerFiles
          npm install
-         npm run start:test & sleep 5 & curl -v http://localhost:3000/health
-     # - name: check the endpoint
-     #   run: 
+         npm run start:test
+     - name: upload artifact
+       uses: actions/upload-artifact@v4
+       with:
+         path: ./log.txt
+         name: log.txt
       
