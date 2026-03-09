@@ -12,6 +12,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: check the values
+        run: |
+          echo ${{secrets.CLIENT_ID}}
+          echo ${{secrets.TENANT_ID}}
       - name: connect azure
         uses: azure/login@v2
         with:
