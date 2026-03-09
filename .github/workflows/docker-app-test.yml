@@ -26,9 +26,10 @@ jobs:
          cd dockerFiles
          npm install
          npm run start:test
+         ls
      - name: upload artifact
        uses: actions/upload-artifact@v4
        with:
-         path: ./log.txt
+         path: log.txt
          name: log.txt
       
