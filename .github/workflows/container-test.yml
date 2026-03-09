@@ -1,6 +1,19 @@
 name: Container test
 on:
   workflow_dispatch:
+    inputs:
+      username:
+        type: string
+        required: true
+      password:
+        type: string
+        required: true
+      registry:
+        type: string
+        required: true
+      registry_address:
+        required: true
+        type: string
   workflow_call:
     inputs:
       username:
