@@ -29,22 +29,6 @@ jobs:
   test-app:
     needs: build
     uses: ./.github/workflows/docker-app-test.yml
-  # test:
-  #   runs-on: ubuntu-latest
-  #   needs: [build,test-app]
-  #   steps:
-  #     - name: checkout repo
-  #       uses: actions/checkout@v4
-  #     - name: docker login
-  #       uses: docker/login-action@v3
-  #       with:
-  #         username: ${{github.actor}}
-  #         password: ${{secrets.GITHUB_TOKEN}}
-  #         registry: ghcr.io
-  #     - name: pull the container and run
-  #       run: |
-  #         docker pull ghcr.io/foundone1/dev/sampleimage:v2
-  #         docker run -d --name myapp -p 3000:3000 ghcr.io/foundone1/dev/sampleimage:v2
   test-container:
     needs: test-app
     uses: ./.github/workflows/container-test.yml
@@ -54,4 +38,6 @@ jobs:
       registry_address: ghcr.io/foundone1/dev/sampleimage:v2
     secrets:
       password: ${{secrets.GITHUB_TOKEN}}
-
+  deploy-app:
+    needs: test-container
+    uses: ./.github/workflows/deploy.yml
