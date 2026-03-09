@@ -1,6 +1,7 @@
 name: deploy the app
 on:
-  - workflow_call
+  workflow_call:
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -9,4 +10,11 @@ jobs:
       - name: connect azure
         uses: azure/login@v4
         with:
-          client-id: ${{secrets}}
+          client-id: ${{secrets.CLIENT_ID}}
+          tenant-id: ${{secrets.TENANT_ID}}
+          subscription-id: ${{secrets.SUBSCRIPTION_ID}}
+      - name: deploy the app
+        uses: azure/webapp-deploy@v3
+        with:
+          app-name: app1-container
+          images: ghcr.io/foundone1/dev/sampleimage@v2
