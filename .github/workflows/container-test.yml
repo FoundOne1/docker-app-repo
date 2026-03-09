@@ -1,0 +1,32 @@
+name: Container test
+on:
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      username:
+        type: string
+        required: true
+      password:
+        type: string
+        required: true
+      registry:
+        type: string
+        required: true
+      registry_address:
+        required: true
+        type: string
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: pull the image
+        id: container-run
+        run: |
+          docker login ${{inputs.registry}} -u ${{inputs.username}} -p ${{inputs.password}}
+          docker pull --name myapp:v1 ${{inputs.registry_address}}
+          echo "res=success" >> "$GITHUB_OUTPUTS"
+    outputs:
+      result: ${{steps.container-run.outputs.res}}
+          
+    
