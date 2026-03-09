@@ -20,8 +20,9 @@ app.get("/",(req,res)=>{
 })
 
 app.get("/health",(req,res)=>{
-    console.log("Logged in")
+    console.log("test is success!!")
     if(process.argv.includes("--once")){
+        console.log("App is up and running")
         res.send("App is up and running")
         server.close(()=>{process.exit(0)})
     }
