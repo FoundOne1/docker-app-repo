@@ -1,24 +1,30 @@
 name: docker app test
 
 on:
- - workflow_dispatch
+ workflow_dispatch:
+ workflow_call:
+   inputs:
+     success_msg:
+       type: string 
+       required: false
 
 
 jobs:
   test:
    strategy:
-     os: [ubuntu-latest,windows-latest]
-     node-version: [18,20,22]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - name: checkout the repo
-        uses: actions/checkout@v4
-      - name: app check
-        uses: action/setup-node@v4
-        with:
-         node-version: ${{matrix.node-version}}
-      - name: check the app
-        run: |
-          cd dockerFiles
-          npm install
-          npm start
+     matrix:
+       os: [ubuntu-latest,windows-latest]
+       node-version: [18,20,22]
+   runs-on: ${{ matrix.os }}
+   steps:
+     - name: checkout the repo
+       uses: actions/checkout@v4
+     - name: app check
+       uses: action/setup-node@v4
+       with:
+        node-version: ${{matrix.node-version}}
+     - name: check the app
+       run: |
+         cd dockerFiles
+         npm install
+         npm start
