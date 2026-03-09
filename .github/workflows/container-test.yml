@@ -41,7 +41,7 @@ jobs:
         run: |
           docker pull ${{inputs.registry_address}}
           docker run -d --name myapp -p 3000:3000 ${{inputs.registry_address}}
-          echo "res=success" >> "$GITHUB_OUTPUTS"
+          echo "res=success" >> "$GITHUB_OUTPUT"
     outputs:
       result: ${{steps.container-run.outputs.res}}
           
