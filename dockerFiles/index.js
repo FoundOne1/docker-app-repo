@@ -6,7 +6,6 @@ const server = app.listen(3000,()=>{
 })
 
 app.use((req,res,next)=>{
-    console.log(req)
     file = fs.writeFile("log.txt","request from "+req.socket.remoteAddress,(err)=>{
         if(err) throw err
     })
