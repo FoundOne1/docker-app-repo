@@ -1,0 +1,29 @@
+name: deploy the app
+on:
+  workflow_call:
+    inputs:
+      msg:
+        type: string
+        required: false
+        
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check the values
+        run: |
+          echo ${{secrets.CLIENT_ID}}
+          echo ${{secrets.TENANT_ID}}
+      - name: connect azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{secrets.CLIENT_ID}}
+          tenant-id: ${{secrets.TENANT_ID}}
+          subscription-id: ${{secrets.SUBSCRIPTION_ID}}
+      - name: deploy the app
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: app1-container
+          images: ghcr.io/foundone1/dev/sampleimage@v2
