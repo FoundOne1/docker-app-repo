@@ -1,11 +1,8 @@
 name: deploy the app
 on:
-  workflow_call:
-    inputs:
-      msg:
-        type: string
-        required: false
-        
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
