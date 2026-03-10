@@ -6,7 +6,7 @@ const axios = require("axios")
 
 const server = app.listen(8080,()=>{
     console.log("app is listening...")
-    client = axios.get("http://localhost:3000/health")
+    client = axios.get("http://localhost:8080/health")
 })
 
 app.use("/health",(req,res,next)=>{
