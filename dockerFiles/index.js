@@ -4,7 +4,7 @@ const path = require("path")
 const axios = require("axios")
 
 
-const server = app.listen(3000,()=>{
+const server = app.listen(8080,()=>{
     console.log("app is listening...")
     client = axios.get("http://localhost:3000/health")
 })
