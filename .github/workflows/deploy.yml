@@ -1,10 +1,13 @@
 name: deploy the app
 on:
-  workflow_call:
-    inputs:
-      msg:
-        type: string
-        required: false
+  # workflow_call:
+  #   inputs:
+  #     msg:
+  #       type: string
+  #       required: false
+  workflow_run:
+    workflows: [Docker App]
+    types: completed
         
   workflow_dispatch:
 
