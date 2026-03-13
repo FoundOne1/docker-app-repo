@@ -16,28 +16,37 @@ jobs:
    #     os: [ubuntu-latest]
    #     node-version: [20]
    runs-on: ubuntu-latest
+   services:
+     dev-app:
+      image: ghcr.io/foundone1/dev/sampleimage:v2
+      ports:
+        - 3000:3000
    steps:
-     - name: checkout the repo
-       uses: actions/checkout@v4
-     - name: app check
-       uses: actions/setup-node@v4
-       with:
-        node-version: 22
-     - name: check the app
-       run: |
-         cd dockerFiles
-         npm install
-         timeout 5 npm run start
-     - name: upload artifact
-       uses: actions/upload-artifact@v4
-       with:
-         path: dockerFiles/log.txt
-         name: log.txt_testCaseFrom_dockerAppTest
-  test-app:
-   runs-on: ubuntu-latest
-   steps:
-     - name: test the API
-       run: |
-        sleep 5
-        curl -v https://localhost:${{env.port}}/health
+    - name: test the container-app
+      run: |
+       sleep 5
+       curl -v https://localhost:3000/health
+  #    - name: checkout the repo
+  #      uses: actions/checkout@v4
+  #    - name: app check
+  #      uses: actions/setup-node@v4
+  #      with:
+  #       node-version: 22
+  #    - name: check the app
+  #      run: |
+  #        cd dockerFiles
+  #        npm install
+  #        timeout 5 npm run start
+  #    - name: upload artifact
+  #      uses: actions/upload-artifact@v4
+  #      with:
+  #        path: dockerFiles/log.txt
+  #        name: log.txt_testCaseFrom_dockerAppTest
+  # test-app:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: test the API
+  #      run: |
+  #       sleep 5
+  #       curl -v https://localhost:${{env.port}}/health
       
