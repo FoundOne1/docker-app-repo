@@ -40,5 +40,5 @@ jobs:
        run: |
         server=$(hostname)
         echo "server=$server" >> "GITHUB_ENV"
-        curl -v https://${{env.server}}:${{env.port}}/health
+        curl -v https://$server:${{env.port}}/health
       
