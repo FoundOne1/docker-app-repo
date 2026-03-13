@@ -26,7 +26,10 @@ jobs:
           tenant-id: ${{secrets.TENANT_ID}}
           subscription-id: ${{secrets.SUBSCRIPTION_ID}}
       - name: deploy the app
-        uses: azure/webapps-deploy@v3
+        uses: azure/container-apps-deploy-action@v1
         with:
-          app-name: app1-container
+          containerAppName: app1-container
+          appSourcePath: ${{github.workspace}}
+          registry: ghcr.io
           images: ghcr.io/foundone1/dev/sampleimage@v2
+          resourceGroup: grp2
