@@ -1,6 +1,10 @@
 name: Docker App
 on:
-  - workflow_dispatch
+  workflow_dispatch:
+      inputs:
+        image-version:
+          required: true
+          type: string
 
 permissions:
   contents: write
@@ -24,8 +28,8 @@ jobs:
           docker build . -t myapp:v1
       - name: docker dev push
         run: |
-          docker tag myapp:v1 ghcr.io/foundone1/dev/sampleimage:v2
-          docker push ghcr.io/foundone1/dev/sampleimage:v2
+          docker tag myapp:v1 ghcr.io/foundone1/dev/sampleimage:${{inputs.image-version}}
+          docker push ghcr.io/foundone1/dev/sampleimage:${{inputs.image-version}}
   test-app:
     needs: build
     uses: ./.github/workflows/docker-app-test.yml
