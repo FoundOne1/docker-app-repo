@@ -38,8 +38,6 @@ jobs:
    steps:
      - name: test the API
        run: |
-        server=$(hostname)
-        echo "server=$server" >> "GITHUB_ENV"
         sleep 5
-        curl -v https://$server:${{env.port}}/health
+        curl -v https://localhost:${{env.port}}/health
       
