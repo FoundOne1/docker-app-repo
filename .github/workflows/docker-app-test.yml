@@ -11,10 +11,10 @@ env:
  port: 3000
 jobs:
   test:
-   strategy:
-     matrix:
-       os: [ubuntu-latest]
-       node-version: [20]
+   # strategy:
+   #   matrix:
+   #     os: [ubuntu-latest]
+   #     node-version: [20]
    runs-on: ubuntu-latest
    steps:
      - name: checkout the repo
@@ -40,5 +40,5 @@ jobs:
        run: |
         server=$(hostname)
         echo "server=$server" >> "GITHUB_ENV"
-        "curl -v https://${{env.server}}:${{env.port}}/health"
+        curl -v https://${{env.server}}:${{env.port}}/health
       
