@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   workflow_run:
     types: completed
-    workflows: []
+    workflows: [Docker App]
 
 permissions:
   id-token: write
@@ -27,7 +27,11 @@ jobs:
           tenant-id: ${{secrets.TENANT_ID}}
           subscription-id: ${{secrets.SUBSCRIPTION_ID}}
       - name: deploy the app
-        uses: azure/webapps-deploy@v3
+        uses: azure/container-apps-deoploy-action@v1
         with:
-          app-name: app1-container
-          images: ghcr.io/foundone1/dev/sampleimage@v2
+          containerAppName: app1-container
+          registryServer: ghcr.io
+          registryUsername: VickyR16
+          registryPassword: ${{secrets.GITHUB_TOKEN}}
+          imageToDeploy: ghcr.io/foundone1/dev/sampleimage:v2
+          resourceGroup: grp2
