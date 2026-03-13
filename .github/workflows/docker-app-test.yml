@@ -25,7 +25,7 @@ jobs:
     - name: test the container-app
       run: |
        sleep 5
-       curl -v https://localhost:3000/health
+       curl -v http://localhost:3000/health
   #    - name: checkout the repo
   #      uses: actions/checkout@v4
   #    - name: app check
