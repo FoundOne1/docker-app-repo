@@ -4,6 +4,9 @@ on:
     branches:
       - main
   workflow_dispatch:
+  workflow_run:
+    types: completed
+    workflows: []
 
 permissions:
   id-token: write
