@@ -37,7 +37,6 @@ jobs:
         uses: azure/container-apps-deploy-action@v1
         with:
           containerAppName: app2-prod
-          appSourcePath: ${{github.workspace}}
           registryServer: ghcr.io
           registryUsername: ${{github.actor}}
           registryPassword: ${{secrets.GITHUB_TOKEN}}
