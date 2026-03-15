@@ -42,6 +42,6 @@ jobs:
       registry_address: ghcr.io/foundone1/dev/sampleimage:v2
     secrets:
       password: ${{secrets.GITHUB_TOKEN}}
-  # deploy-app:
-  #   needs: test-container
-  #   uses: ./.github/workflows/deploy.yml
+  deploy-app:
+    needs: test-container
+    uses: ./.github/workflows/deploy.yml
