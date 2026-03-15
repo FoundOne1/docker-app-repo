@@ -6,8 +6,8 @@ on:
           required: true
           type: string
           default: "v2"
-  push:
-    branches: [feature_branch]
+  # push:
+  #   branches: [feature_branch]
 
 permissions:
   contents: write
