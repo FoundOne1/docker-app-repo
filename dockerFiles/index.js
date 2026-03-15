@@ -6,7 +6,7 @@ const axios = require("axios")
 
 const server = app.listen(3000,()=>{
     console.log("app is listening...")
-    client = axios.get("http://localhost:3000/health")
+    // client = axios.get("http://localhost:3000/health")
 })
 
 app.use("/health",(req,res,next)=>{
@@ -17,6 +17,10 @@ app.use("/health",(req,res,next)=>{
 })
 app.get("/",(req,res)=>{
     res.send("You are connected")
+})
+
+app.get("/welcome",(req,res)=>{
+    res.send("Welcome!!")
 })
 
 app.get("/health",(req,res)=>{
