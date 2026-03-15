@@ -19,7 +19,7 @@ app.get("/",(req,res)=>{
     res.send("You are connected")
 })
 
-app.get("/welcome",()=>{
+app.get("/welcome",(req,res)=>{
     res.send("Welcome!!")
 })
 
