@@ -42,5 +42,6 @@ jobs:
           registryPassword: ${{secrets.GITHUB_TOKEN}}
           imageToDeploy: ghcr.io/foundone1/prod/prodimage:v2
           resoureGroup: grp2-prod
+          containerAppEnvironment: managedEnvironment-grp2-860a
         
       
