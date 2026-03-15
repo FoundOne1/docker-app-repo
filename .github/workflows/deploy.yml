@@ -30,6 +30,6 @@ jobs:
         with:
           containerAppName: app1-container
           appSourcePath: ${{github.workspace}}
-          registry: ghcr.io
+          registryUrl: ghcr.io
           images: ghcr.io/foundone1/dev/sampleimage@v2
           resourceGroup: grp2
