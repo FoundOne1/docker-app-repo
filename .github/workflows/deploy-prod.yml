@@ -14,19 +14,19 @@ jobs:
   tag-prod-container:
     runs-on: ubuntu-latest
     steps:
-      - name: docker login
-        uses: docker/login-action@v4
-        with:
-          username: ${{github.actor}}
-          password: ${{secrets.GITHUB_TOKEN}}
-          registry: ghcr.io
-      - name: pull and tag the image
-        run: |
-          docker pull ghcr.io/foundone1/dev/sampleimage:v2
-          docker tag ghcr.io/foundone1/dev/sampleimage:v2 ghcr.io/foundone1/prod/prodimage:v2
-      - name: push the prod image
-        run: |
-          docker push ghcr.io/foundone1/prod/prodimage:v2
+      # - name: docker login
+      #   uses: docker/login-action@v4
+      #   with:
+      #     username: ${{github.actor}}
+      #     password: ${{secrets.GITHUB_TOKEN}}
+      #     registry: ghcr.io
+      # - name: pull and tag the image
+      #   run: |
+      #     docker pull ghcr.io/foundone1/dev/sampleimage:v2
+      #     docker tag ghcr.io/foundone1/dev/sampleimage:v2 ghcr.io/foundone1/prod/prodimage:v2
+      # - name: push the prod image
+      #   run: |
+      #     docker push ghcr.io/foundone1/prod/prodimage:v2
       - name: login to azure
         uses: azure/login@v2
         with:
