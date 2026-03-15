@@ -15,7 +15,7 @@ jobs:
       - name: login to the docker
         uses: docker/login-action@v3
         with:
-          username: VickyR16
+          username: ${{github.actor}}
           password: ${{secrets.GITHUB_TOKEN}}
           registry: ghcr.io
       - name: build and push the docker
