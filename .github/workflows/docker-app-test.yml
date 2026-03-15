@@ -22,5 +22,5 @@ jobs:
       run: |
        server=$(hostname)
        sleep 5
-       curl -v http://localhost:3000/health
+       curl -v http://$server:3000/health
       
