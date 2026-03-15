@@ -38,7 +38,7 @@ jobs:
         with:
           containerAppName: app2-prod
           appSourcePath: ${{github.workspace}}
-          registry: ghcr.io
+          registryUrl: ghcr.io
           images: ghcr.io/foundone1/prod/prodimage:v2
           resoureGroup: grp2-prod
         
