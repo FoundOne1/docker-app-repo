@@ -33,5 +33,5 @@ jobs:
           echo "res=failed" >> $GITHUB_OUTPUT
           fi
       - name: print the output
-        run: ${{steps.build-state.outputs.res}}
+        run: echo "${{steps.build-state.outputs.res}}"
           
