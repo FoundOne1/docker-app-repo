@@ -19,6 +19,10 @@ app.get("/",(req,res)=>{
     res.send("You are connected")
 })
 
+app.get("/welcome",()=>{
+    res.send("Welcome!!)
+})
+
 app.get("/health",(req,res)=>{
     if(process.argv.includes("--once")){
         console.log("App is up and running")
