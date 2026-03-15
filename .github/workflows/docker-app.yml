@@ -28,7 +28,7 @@ jobs:
       - name: docker build
         run: |
           cd dockerFiles
-          docker build . -t myapp:v1
+          docker build . -t myapp
       - name: docker dev push
         run: |
           docker tag myapp ghcr.io/foundone1/dev/sampleimage:v2
