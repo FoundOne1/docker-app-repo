@@ -5,6 +5,12 @@ on:
       version:
         type: string
         required: true
+  workflow_call:
+    inputs:
+      version:
+        type: string
+        required: true
+        default: "v2"
 permissions:
   packages: write
   contents: write
