@@ -11,10 +11,6 @@ env:
  port: 3000
 jobs:
   test:
-   # strategy:
-   #   matrix:
-   #     os: [ubuntu-latest]
-   #     node-version: [20]
    runs-on: ubuntu-latest
    services:
      dev-app:
@@ -27,27 +23,4 @@ jobs:
        server=$(hostname)
        sleep 5
        curl -v http://$server:3000/health
-  #    - name: checkout the repo
-  #      uses: actions/checkout@v4
-  #    - name: app check
-  #      uses: actions/setup-node@v4
-  #      with:
-  #       node-version: 22
-  #    - name: check the app
-  #      run: |
-  #        cd dockerFiles
-  #        npm install
-  #        timeout 5 npm run start
-  #    - name: upload artifact
-  #      uses: actions/upload-artifact@v4
-  #      with:
-  #        path: dockerFiles/log.txt
-  #        name: log.txt_testCaseFrom_dockerAppTest
-  # test-app:
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #    - name: test the API
-  #      run: |
-  #       sleep 5
-  #       curl -v https://localhost:${{env.port}}/health
       
