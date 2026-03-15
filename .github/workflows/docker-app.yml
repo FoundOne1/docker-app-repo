@@ -5,6 +5,8 @@ on:
         image-version:
           required: true
           type: string
+  push:
+    branches: [feature_branch]
 
 permissions:
   contents: write
