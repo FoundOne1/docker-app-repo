@@ -38,8 +38,10 @@ jobs:
         with:
           containerAppName: app2-prod
           appSourcePath: ${{github.workspace}}
-          registryUrl: ghcr.io
-          images: ghcr.io/foundone1/prod/prodimage:v2
+          registryServer: ghcr.io
+          registryUsername: ${{github.actor}}
+          registryPassword: ${{secrets.GITHUB_TOKEN}}
+          imageToDeploy: ghcr.io/foundone1/prod/prodimage:v2
           resoureGroup: grp2-prod
         
       
