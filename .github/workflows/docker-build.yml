@@ -1,0 +1,34 @@
+name: Docker build and push
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the repo
+        uses: actions/checkout@v4
+      - name: login to the docker
+        uses: docker/login-action@v3
+        with:
+          username: VickyR16
+          password: ${{secrets.GITHUB_TOKEN}}
+          registry: ghcr.io
+      - name: build and push the docker
+        id: build-state
+        run: |
+          cd dockerFiles
+          docker build . -t myapp
+          docker push myapp ghcr.io/foundone1/dev/sampleimage:${{inputs.version}}
+          if [ $? == 0 ]; then
+          echo "res=success" >> $GITHUB_OUTPUT
+          else
+          echo "res=failed" >> $GITHUB_OUTPUT
+          fi
+      - name: print the output
+        run: ${{steps.build-state.outputs.res}}
+          
