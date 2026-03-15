@@ -5,7 +5,9 @@ on:
       version:
         type: string
         required: true
-
+permissions:
+  packages: write
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
