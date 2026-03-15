@@ -5,6 +5,7 @@ on:
         image-version:
           required: true
           type: string
+          default: "v2"
   push:
     branches: [feature_branch]
 
@@ -30,8 +31,8 @@ jobs:
           docker build . -t myapp:v1
       - name: docker dev push
         run: |
-          docker tag myapp:v1 ghcr.io/foundone1/dev/sampleimage:${{inputs.image-version}}
-          docker push ghcr.io/foundone1/dev/sampleimage:${{inputs.image-version}}
+          docker tag myapp ghcr.io/foundone1/dev/sampleimage:v2
+          docker push ghcr.io/foundone1/dev/sampleimage:v2
   test-app:
     needs: build
     uses: ./.github/workflows/docker-app-test.yml
