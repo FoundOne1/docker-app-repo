@@ -1,0 +1,1 @@
+We should specify id-token: write in the caller workflow if you are using workflow_call trigger, even if we have mentioned id-token in callee workflow
