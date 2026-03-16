@@ -12,8 +12,8 @@ on:
     paths:
       - 'dockerFiles/**'
 env:
-  version: ${{inputs.image-version}}
-
+  version: v2
+  
 permissions:
   contents: write
   packages: write
@@ -39,7 +39,7 @@ jobs:
     needs: test-app
     uses: ./.github/workflows/deploy-dev.yml
     with:
-      version: $version
+      version: v2
     secrets:
       CLIENT_ID: ${{secrets.CLIENT_ID}}
       TENANT_ID: ${{secrets.TENANT_ID}}
