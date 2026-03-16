@@ -37,6 +37,6 @@ jobs:
     uses: ./.github/workflows/docker-app-test.yml
   deploy-app:
     needs: test-app
-    uses: ./.github/workflows/deploy.yml
+    uses: ./.github/workflows/deploy-dev.yml
     with:
       version: $version
