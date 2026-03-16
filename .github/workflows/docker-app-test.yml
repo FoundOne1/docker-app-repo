@@ -4,10 +4,6 @@ description: it will test the app and the container
 on:
  workflow_dispatch:
  workflow_call:
-   inputs:
-     success_msg:
-       type: string 
-       required: false
 env:
  port: 3000
 jobs:
