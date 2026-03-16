@@ -27,11 +27,10 @@ jobs:
           tenant-id: ${{secrets.TENANT_ID}}
           subscription-id: ${{secrets.SUBSCRIPTION_ID}}
       - name: deploy the app
-        uses: azure/container-apps-deploy-action@v2
+        uses: azure/container-apps-deploy-action@v1
         with:
           containerAppName: app2
-          registryServer: ghcr.io
-          registryUsername: VickyR16
-          registryPassword: ${{secrets.GITHUB_TOKEN}}
-          imageToDeploy: ghcr.io/foundone1/dev/sampleimage:v2
+          appSourcePath: ${{github.workspace}}
+          registryUrl: ghcr.io
+          images: ghcr.io/foundone1/dev/sampleimage:v2
           resourceGroup: grp2
