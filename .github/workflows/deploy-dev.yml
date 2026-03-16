@@ -1,6 +1,6 @@
 name: Dev deployment
 on:
-  - workflow_call
+  workflow_call:
       
 permissions:
   id-token: write
