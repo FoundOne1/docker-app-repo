@@ -25,5 +25,5 @@ app.get("/welcome",(req,res)=>{
 
 app.get("/health",(req,res)=>{
     res.send("App is up and running")
-    server.close(()=>{process.exit(0)})
+    // server.close(()=>{process.exit(0)})
 })
