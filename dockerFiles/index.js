@@ -20,7 +20,7 @@ app.get("/",(req,res)=>{
 })
 
 app.get("/welcome",(req,res)=>{
-    res.send("Welcome!!")
+    res.send("Welcome")
 })
 
 app.get("/health",(req,res)=>{
