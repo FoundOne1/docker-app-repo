@@ -1,11 +1,17 @@
 name: deploy the app
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        required: true
+        default: "v2"
   workflow_call:
     inputs:
       version:
         type: string
         required: true
+        default: "v2"
     
 permissions:
   id-token: write
