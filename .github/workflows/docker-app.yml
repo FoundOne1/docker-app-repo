@@ -38,3 +38,5 @@ jobs:
   deploy-app:
     needs: test-app
     uses: ./.github/workflows/deploy.yml
+    with:
+      version: $version
