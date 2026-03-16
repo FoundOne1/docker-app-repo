@@ -38,3 +38,4 @@ jobs:
   deploy-app:
     needs: test-app
     uses: ./.github/workflows/deploy-dev.yml
+    secrets: inherit
