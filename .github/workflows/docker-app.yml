@@ -11,6 +11,8 @@ on:
       - feature_branch
     paths:
       - 'dockerFiles/**'
+env:
+  version: v2
 
 permissions:
   contents: write
@@ -20,14 +22,14 @@ jobs:
   build:
     uses: ./.github/workflows/docker-build.yml
     with:
-      version: v2
+      version: $version
   test-container:
     needs: build
     uses: ./.github/workflows/container-test.yml
     with:
       username: ${{github.actor}}
       registry: ghcr.io
-      registry_address: ghcr.io/foundone1/dev/sampleimage:v2
+      registry_address: ghcr.io/foundone1/dev/sampleimage:$version
     secrets:
       password: ${{secrets.GITHUB_TOKEN}}
   test-app:
