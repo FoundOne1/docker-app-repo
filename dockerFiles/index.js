@@ -16,7 +16,7 @@ app.use("/health",(req,res,next)=>{
     next("route")
 })
 app.get("/",(req,res)=>{
-    res.send("You are connected")
+    res.send("You are connected!!")
 })
 
 app.get("/welcome",(req,res)=>{
