@@ -1,6 +1,14 @@
 name: Dev deployment
 on:
   workflow_call:
+    secrets:
+      CLIENT_ID:
+        required: true
+      TENANT_ID:
+        required: true
+      SUBSCRIPTION_ID:
+        required: true
+      
       
 permissions:
   id-token: write
