@@ -1,25 +1,18 @@
 name: deploy the app
 on:
-  # pull_request:
-  #   branches:
-  #     - main
   workflow_dispatch:
-  workflow_run:
-    types: completed
-    workflows: [Docker App]
+  workflow_call:
+    
 
 permissions:
   id-token: write
   contents: write
+  packages: read
   
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: check the values
-        run: |
-          echo ${{secrets.CLIENT_ID}}
-          echo ${{secrets.TENANT_ID}}
       - name: connect azure
         uses: azure/login@v2
         with:
@@ -30,7 +23,7 @@ jobs:
         uses: azure/container-apps-deploy-action@v1
         with:
           containerAppName: app2
-          appSourcePath: ${{github.workspace}}
           registryUrl: ghcr.io
-          images: ghcr.io/foundone1/dev/sampleimage:v2
+          imageToDeploy: ghcr.io/foundone1/dev/sampleimage:v2
           resourceGroup: grp2
+          containerAppEnvironment: managedEnvironment-grp2-860a
