@@ -5,14 +5,12 @@ on:
         image-version:
           required: true
           type: string
-          # default: "v2"
+          default: "v2"
   push:
     branches:
       - feature_branch
     paths:
       - 'dockerFiles/**'
-env:
-  version: v2
   
 permissions:
   contents: write
@@ -22,14 +20,14 @@ jobs:
   build:
     uses: ./.github/workflows/docker-build.yml
     with:
-      version: $version
+      version: ${{inputs.image-version}}
   test-container:
     needs: build
     uses: ./.github/workflows/container-test.yml
     with:
       username: ${{github.actor}}
       registry: ghcr.io
-      registry_address: ghcr.io/foundone1/dev/sampleimage:${{ github.env.version }}
+      registry_address: ghcr.io/foundone1/dev/sampleimage:${{inputs.image-version}}
     secrets:
       password: ${{secrets.GITHUB_TOKEN}}
   test-app:
