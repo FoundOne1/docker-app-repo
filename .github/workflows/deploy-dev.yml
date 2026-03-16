@@ -1,0 +1,41 @@
+name: Dev deployment
+on:
+  workflow_call:
+    secrets:
+      CLIENT_ID:
+        required: true
+      TENANT_ID:
+        required: true
+      SUBSCRIPTION_ID:
+        required: true
+      
+      
+permissions:
+  id-token: write
+  packages: read
+  contents: write
+
+jobs:
+  login-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: login to azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.CLIENT_ID }}
+          tenant-id: ${{ secrets.TENANT_ID }}
+          subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
+      - name: container apps deployment
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          containerAppName: app2
+          registryUrl: ghcr.io
+          imageToDeploy: ghcr.io/foundone1/dev/sampleimage:v2
+          resourceGroup: grp2
+          containerAppEnvironment: managedEnvironment-grp2-860a
+          registryUsername: ${{github.actor}}
+          registryPassword: ${{secrets.GITHUB_TOKEN}}
+
+
+
+  
