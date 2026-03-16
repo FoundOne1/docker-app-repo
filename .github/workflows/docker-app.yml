@@ -43,4 +43,4 @@ jobs:
     secrets:
       CLIENT_ID: ${{secrets.CLIENT_ID}}
       TENANT_ID: ${{secrets.TENANT_ID}}
-      SUBSCRIPTIO_ID: ${{secrets.SUBSCRIPTIO_ID}}
+      SUBSCRIPTION_ID: ${{secrets.SUBSCRIPTION_ID}}
