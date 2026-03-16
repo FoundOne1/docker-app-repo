@@ -25,5 +25,7 @@ jobs:
           containerAppName: app2
           registryUrl: ghcr.io
           imageToDeploy: ghcr.io/foundone1/dev/sampleimage:v2
+          registryUsername: ${{github.actor}}
+          registryPassword: ${{secrets.GITHUB_TOKEN}}
           resourceGroup: grp2
           containerAppEnvironment: managedEnvironment-grp2-860a
