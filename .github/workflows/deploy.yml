@@ -1,9 +1,12 @@
 name: deploy the app
 on:
-  - workflow_dispatch
-  - workflow_call
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      version:
+        type: string
+        required: true
     
-
 permissions:
   id-token: write
   contents: write
@@ -24,7 +27,7 @@ jobs:
         with:
           containerAppName: app2
           registryUrl: ghcr.io
-          imageToDeploy: ghcr.io/foundone1/dev/sampleimage:v2
+          imageToDeploy: ghcr.io/foundone1/dev/sampleimage:${{inputs.version}}
           registryUsername: ${{github.actor}}
           registryPassword: ${{secrets.GITHUB_TOKEN}}
           resourceGroup: grp2
