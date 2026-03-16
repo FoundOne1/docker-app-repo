@@ -24,9 +24,6 @@ app.get("/welcome",(req,res)=>{
 })
 
 app.get("/health",(req,res)=>{
-    if(process.argv.includes("--once")){
-        console.log("App is up and running")
-        res.send("App is up and running")
-        server.close(()=>{process.exit(0)})
-    }
+    res.send("App is up and running")
+    server.close(()=>{process.exit(0)})
 })

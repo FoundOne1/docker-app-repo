@@ -8,6 +8,7 @@ on:
 permissions:
   packages: write
   contents: write
+  id-token: write
 
 jobs:
   tag-prod-container:
@@ -26,5 +27,22 @@ jobs:
       - name: push the prod image
         run: |
           docker push ghcr.io/foundone1/prod/prodimage:v2
+      - name: login to azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{secrets.CLIENT_ID}}
+          tenant-id: ${{secrets.TENANT_ID}}
+          subscription-id: ${{secrets.SUBSCRIPTION_ID}}
+      - name: azure container apps deployment
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          containerAppName: app2-prod
+          registryServer: ghcr.io
+          registryUsername: ${{github.actor}}
+          registryPassword: ${{secrets.GITHUB_TOKEN}}
+          imageToDeploy: ghcr.io/foundone1/prod/prodimage:v2
+          resourceGroup: grp2
+          containerAppEnvironment: managedEnvironment-grp2-860a
+
         
       

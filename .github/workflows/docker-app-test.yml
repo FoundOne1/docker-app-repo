@@ -1,4 +1,5 @@
 name: docker app test
+description: it will test the app and the container
 
 on:
  workflow_dispatch:
@@ -7,41 +8,20 @@ on:
      success_msg:
        type: string 
        required: false
-
 env:
-  port: 3000
+ port: 3000
 jobs:
   test:
-   strategy:
-     matrix:
-       os: [ubuntu-latest]
-       node-version: [20]
-   runs-on: ${{ matrix.os }}
-   steps:
-     - name: checkout the repo
-       uses: actions/checkout@v4
-     - name: app check
-       uses: actions/setup-node@v4
-       with:
-        node-version: ${{matrix.node-version}}
-     - name: check the app
-       run: |
-         cd dockerFiles
-         npm install
-         npm run start
-     - name: upload artifact
-       uses: actions/upload-artifact@v4
-       with:
-         path: dockerFiles/log.txt
-         name: log.txt_testCaseFrom_dockerAppTest
-  test-app:
    runs-on: ubuntu-latest
+   services:
+     dev-app:
+      image: ghcr.io/foundone1/dev/sampleimage:v2
+      ports:
+        - 3000:3000
    steps:
-     - name: checkout the repo
-       uses: actions/checkout@v4
-     - name: run the test
-       run: |
-         server=$(hostname)
-         echo "server=$server" >> "GITHUB_ENV"
-         "curl -v htpps://${{env.server}}:${{env.port}}/health"
+    - name: test the container-app
+      run: |
+       server=$(hostname)
+       sleep 5
+       curl -v http://$server:3000/health
       

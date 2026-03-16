@@ -5,7 +5,15 @@ on:
       version:
         type: string
         required: true
-
+  workflow_call:
+    inputs:
+      version:
+        type: string
+        required: true
+        default: "v2"
+permissions:
+  packages: write
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,7 +23,7 @@ jobs:
       - name: login to the docker
         uses: docker/login-action@v3
         with:
-          username: VickyR16
+          username: ${{github.actor}}
           password: ${{secrets.GITHUB_TOKEN}}
           registry: ghcr.io
       - name: build and push the docker
@@ -23,12 +31,13 @@ jobs:
         run: |
           cd dockerFiles
           docker build . -t myapp
-          docker push myapp ghcr.io/foundone1/dev/sampleimage:${{inputs.version}}
+          docker tag myapp ghcr.io/foundone1/dev/sampleimage:${{inputs.version}}
+          docker push ghcr.io/foundone1/dev/sampleimage:${{inputs.version}}
           if [ $? == 0 ]; then
           echo "res=success" >> $GITHUB_OUTPUT
           else
           echo "res=failed" >> $GITHUB_OUTPUT
           fi
       - name: print the output
-        run: ${{steps.build-state.outputs.res}}
+        run: echo "${{steps.build-state.outputs.res}}"
           
