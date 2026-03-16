@@ -40,4 +40,7 @@ jobs:
     uses: ./.github/workflows/deploy-dev.yml
     with:
       version: $version
-    secrets: inherit
+    secrets:
+      CLIENT_ID: ${{secrets.CLIENT_ID}}
+      TENANT_ID: ${{secrets.TENANT_ID}}
+      SUBSCRIPTIO_ID: ${{secrets.SUBSCRIPTIO_ID}}
