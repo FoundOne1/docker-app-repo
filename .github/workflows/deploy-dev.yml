@@ -1,18 +1,6 @@
 name: Dev deployment
 on:
-  workflow_call:
-    inputs:
-      version:
-        type: string
-        required: true
-        #default: 'v2'
-    secrets:
-      CLIENT_ID:
-        required: true
-      TENANT_ID:
-        required: true
-      SUBSCRIPTION_ID:
-        required: true
+  - workflow_call
       
 permissions:
   id-token: write
@@ -34,7 +22,7 @@ jobs:
         with:
           containerAppName: app2
           registryUrl: ghcr.io
-          imageToDeploy: ghcr.io/foundone1/dev/sampleimage:${{inputs.version}}
+          imageToDeploy: ghcr.io/foundone1/dev/sampleimage:v2
           resourceGroup: grp2
           containerAppEnvironment: managedEnvironment-grp2-860a
           
