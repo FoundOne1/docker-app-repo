@@ -35,12 +35,12 @@ jobs:
   test-app:
     needs: test-container
     uses: ./.github/workflows/docker-app-test.yml
-  # deploy-app:
-  #   needs: test-app
-  #   uses: ./.github/workflows/deploy-dev.yml
-  #   with:
-  #     version: v2
-  #   secrets:
-  #     CLIENT_ID: ${{secrets.CLIENT_ID}}
-  #     TENANT_ID: ${{secrets.TENANT_ID}}
-  #     SUBSCRIPTION_ID: ${{secrets.SUBSCRIPTION_ID}}
+  deploy-app:
+    needs: test-app
+    uses: ./.github/workflows/deploy-dev.yml
+    with:
+      version: v2
+    secrets:
+      CLIENT_ID: ${{secrets.CLIENT_ID}}
+      TENANT_ID: ${{secrets.TENANT_ID}}
+      SUBSCRIPTION_ID: ${{secrets.SUBSCRIPTION_ID}}
