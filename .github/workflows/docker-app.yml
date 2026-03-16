@@ -10,7 +10,7 @@ on:
     branches:
       - feature_branch
     paths:
-      - dockerFiles/**
+      - 'dockerFiles/**'
 
 permissions:
   contents: write
