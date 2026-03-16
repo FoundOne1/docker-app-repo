@@ -7,3 +7,6 @@
 - Azure integration
 - Continuous deployment to environment (Dev/Prod)
 - Secrets management with GitHub
+
+
+  ## Author - Vigneswaran R
