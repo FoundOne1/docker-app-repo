@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps CI/CD Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            color: white;
+        }
+
+        .header {
+            background: #1e293b;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #38bdf8;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 250px;
+            box-shadow: 0 0 10px rgba(0,0,0,.4);
+        }
+
+        .card h2 {
+            color: #22c55e;
+            margin-bottom: 10px;
+        }
+
+        .pipeline {
+            margin-top: 30px;
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            background: #334155;
+            padding: 15px;
+            border-radius: 8px;
+            width: 150px;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .success {
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background: #1e293b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🚀 CI/CD Automation Dashboard</h1>
+        <p>GitHub Actions | Azure | Docker | Kubernetes</p>
+    </div>
+
+    <div class="container">
+
+        <div class="cards">
+
+            <div class="card">
+                <h2>Application</h2>
+                <p>DevOps Sample App</p>
+            </div>
+
+            <div class="card">
+                <h2>Build Status</h2>
+                <p class="success">SUCCESS ✅</p>
+            </div>
+
+            <div class="card">
+                <h2>Version</h2>
+                <p>v1.0.0</p>
+            </div>
+
+            <div class="card">
+                <h2>Environment</h2>
+                <p>Production</p>
+            </div>
+
+        </div>
+
+        <div class="pipeline">
+            <h2>Pipeline Stages</h2>
+            <br>
+
+            <div class="steps">
+                <div class="step">Git Checkout</div>
+                <div class="step">Build</div>
+                <div class="step">Test</div>
+                <div class="step">Docker</div>
+                <div class="step">Push Image</div>
+                <div class="step">Deploy</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        Automated using GitHub Actions and Azure
+    </footer>
+
+</body>
+</html>
