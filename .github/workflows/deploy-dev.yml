@@ -45,7 +45,7 @@ jobs:
           containerAppEnvironment: managedEnvironment-grp2-860a
           registryUsername: ${{github.actor}}
           registryPassword: ${{secrets.GITHUB_TOKEN}}
-          ingress: Enabled
+          ingress: external
           targetPort: 80
 
 
