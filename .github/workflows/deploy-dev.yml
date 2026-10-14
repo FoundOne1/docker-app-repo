@@ -19,6 +19,8 @@ permissions:
   id-token: write
   packages: read
   contents: write
+env:
+  ENVIRONMENT: ${{github.ref_name == 'main' && 'PROD' || 'DEV'}}
 
 jobs:
   login-deploy:
