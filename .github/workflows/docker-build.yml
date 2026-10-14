@@ -7,7 +7,7 @@ on:
         required: true
   workflow_call:
     inputs:
-      version:
+      image-version:
         type: string
         required: true
         default: "v2"
@@ -31,8 +31,8 @@ jobs:
         run: |
           cd dockerFiles
           docker build . -t myapp
-          docker tag myapp ghcr.io/foundone1/dev/sampleimage:${{inputs.version}}
-          docker push ghcr.io/foundone1/dev/sampleimage:${{inputs.version}}
+          docker tag myapp ghcr.io/foundone1/dev/sampleimage:${{inputs.image-version}}
+          docker push ghcr.io/foundone1/dev/sampleimage:${{inputs.image-version}}
           if [ $? == 0 ]; then
           echo "res=success" >> $GITHUB_OUTPUT
           else
