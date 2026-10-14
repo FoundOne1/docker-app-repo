@@ -22,7 +22,7 @@ jobs:
       - name: login to azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.CLIENT_ID }}
+          client-id: ${{ secrets.CLIENT_ID_FEATURE }}
           tenant-id: ${{ secrets.TENANT_ID }}
           subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
       - name: container apps deployment
