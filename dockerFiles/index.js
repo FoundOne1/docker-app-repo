@@ -3,9 +3,9 @@ const fs = require("fs")
 const path = require("path")
 const axios = require("axios")
 let val = 0
+const port = process.env.port || 3000
 
-
-const server = app.listen(3000,()=>{
+const server = app.listen(port,()=>{
     console.log("app is listening...")
     // client = axios.get("http://localhost:3000/health")
 })
