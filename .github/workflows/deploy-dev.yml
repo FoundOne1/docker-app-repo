@@ -27,7 +27,7 @@ jobs:
           subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
       - name: Create resource group
         run: |
-              az group create -n grp2 --location east-us
+              az group create -n grp2 --location eastus
       - name: container apps deployment
         uses: azure/container-apps-deploy-action@v1
         with:
