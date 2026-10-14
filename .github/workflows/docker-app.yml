@@ -1,11 +1,5 @@
 name: Docker App
 on:
-  workflow_dispatch:
-      inputs:
-        image-version:
-          required: true
-          type: string
-          default: "v2"
   push:
     branches:
       - feature_branch
@@ -21,14 +15,14 @@ jobs:
   build:
     uses: ./.github/workflows/docker-build.yml
     with:
-      version: ${{inputs.image-version}}
+      version: ${{github.sha}}
   test-container:
     needs: build
     uses: ./.github/workflows/container-test.yml
     with:
       username: ${{github.actor}}
       registry: ghcr.io
-      registry_address: ghcr.io/foundone1/dev/sampleimage:${{inputs.image-version}}
+      registry_address: ghcr.io/foundone1/dev/sampleimage:${{github.sha}}
     secrets:
       password: ${{secrets.GITHUB_TOKEN}}
   test-app:
