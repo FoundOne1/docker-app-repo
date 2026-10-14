@@ -2,7 +2,7 @@ const app = require("express")()
 const fs = require("fs")
 const path = require("path")
 const axios = require("axios")
-let val = 0
+let val = 1
 
 const ENVIRONMENT = process.env.ENVIRONMENT
 
