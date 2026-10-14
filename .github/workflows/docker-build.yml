@@ -31,8 +31,8 @@ jobs:
         run: |
           cd dockerFiles
           docker build . -t myapp
-          docker tag myapp ghcr.io/foundone1/dev/sampleimage:${{inputs.image-version}}
-          docker push ghcr.io/foundone1/dev/sampleimage:${{inputs.image-version}}
+          docker tag myapp ghcr.io/foundone1/dev/sampleimage:${{ inputs.image-version }}
+          docker push ghcr.io/foundone1/dev/sampleimage:${{ inputs.image-version }}
           if [ $? == 0 ]; then
           echo "res=success" >> $GITHUB_OUTPUT
           else
