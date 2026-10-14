@@ -32,3 +32,5 @@ jobs:
     needs: test-app
     uses: ./.github/workflows/deploy-dev.yml
     secrets: inherit
+    with:
+      version: ${{github.sha}}
