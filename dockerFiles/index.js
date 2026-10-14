@@ -4,6 +4,8 @@ const path = require("path")
 const axios = require("axios")
 let val = 0
 
+const ENVIRONMENT = process.env.ENVIRONMENT
+
 const server = app.listen(80,()=>{
     console.log("app is listening...")
 })
@@ -15,7 +17,7 @@ app.use("/health",(req,res,next)=>{
     next("route")
 })
 app.get("/",(req,res)=>{
-    res.send("You are connected")
+    res.sendFile(path.join(__dirname,'index.html'))
 })
 
 app.get("/welcome",(req,res)=>{
