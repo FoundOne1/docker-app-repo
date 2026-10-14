@@ -2,6 +2,7 @@ const app = require("express")()
 const fs = require("fs")
 const path = require("path")
 const axios = require("axios")
+let val = 0
 
 
 const server = app.listen(3000,()=>{
