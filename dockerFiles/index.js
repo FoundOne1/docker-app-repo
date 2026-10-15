@@ -18,7 +18,9 @@ app.use("/health",(req,res,next)=>{
     next("route")
 })
 app.get("/",(req,res)=>{
-    res.sendFile(path.join(__dirname,'index.html'))
+    res.render('index',{
+        environment: process.env.ENVIRONMENT
+    })
 })
 
 app.get("/welcome",(req,res)=>{
