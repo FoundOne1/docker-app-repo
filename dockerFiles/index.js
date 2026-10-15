@@ -3,6 +3,8 @@ const fs = require("fs")
 const path = require("path")
 const axios = require("axios")
 const ejs = require("ejs")
+
+app.set("view engine","ejs")
 let val = 1
 
 const ENVIRONMENT = process.env.ENVIRONMENT
