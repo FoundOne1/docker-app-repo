@@ -11,7 +11,7 @@ jobs:
    runs-on: ubuntu-latest
    services:
      dev-app:
-      image: ghcr.io/foundone1/dev/sampleimage:v2
+      image: ghcr.io/foundone1/dev/sampleimage:${{github.sha}}
       ports:
         - 3000:3000
    steps:
