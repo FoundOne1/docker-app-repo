@@ -13,7 +13,7 @@ jobs:
      dev-app:
       image: ghcr.io/foundone1/dev/devimage:${{github.sha}}
       ports:
-        - 3000:3000
+        - 80:80
    steps:
     - name: test the container-app
       run: |
