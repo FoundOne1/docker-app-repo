@@ -22,7 +22,7 @@ jobs:
     with:
       username: ${{github.actor}}
       registry: ghcr.io
-      registry_address: ghcr.io/foundone1/dev/sampleimage:${{github.sha}}
+      registry_address: ghcr.io/foundone1/dev/devimage:${{github.sha}}
     secrets:
       password: ${{secrets.GITHUB_TOKEN}}
   test-app:
