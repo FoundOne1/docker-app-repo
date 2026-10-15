@@ -30,9 +30,9 @@ jobs:
         run: |
           cd dockerFiles
           docker build . -t myapp
-          docker tag myapp ghcr.io/foundone1/dev/devimage:${{github.event.inputs.version}}
+          docker tag myapp ghcr.io/foundone1/dev/devimage:${{inputs.version}}
           docker tag myapp ghcr.io/foundone1/dev/devimage:latest
-          docker push ghcr.io/foundone1/dev/devimage:${{github.event.inputs.version}}
+          docker push ghcr.io/foundone1/dev/devimage:${{inputs.version}}
           docker tag myapp ghcr.io/foundone1/dev/devimage:latest
           if [ $? == 0 ]; then
           echo "res=success" >> $GITHUB_OUTPUT
