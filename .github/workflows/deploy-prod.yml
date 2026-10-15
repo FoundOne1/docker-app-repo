@@ -24,11 +24,11 @@ jobs:
           registry: ghcr.io
       - name: pull and tag the image
         run: |
-          docker pull ghcr.io/foundone1/dev/sampleimage:version
-          docker tag ghcr.io/foundone1/dev/sampleimage:version ghcr.io/foundone1/prod/prodimage:version
+          docker pull ghcr.io/foundone1/dev/sampleimage:${{env.version}}
+          docker tag ghcr.io/foundone1/dev/sampleimage:${{env.version}} ghcr.io/foundone1/prod/prodimage:${{env.version}}
       - name: push the prod image
         run: |
-          docker push ghcr.io/foundone1/prod/prodimage:version
+          docker push ghcr.io/foundone1/prod/prodimage:${{env.version}}
       - name: login to azure
         uses: azure/login@v2
         with:
@@ -42,7 +42,7 @@ jobs:
           registryServer: ghcr.io
           registryUsername: ${{github.actor}}
           registryPassword: ${{secrets.GITHUB_TOKEN}}
-          imageToDeploy: ghcr.io/foundone1/prod/prodimage:version
+          imageToDeploy: ghcr.io/foundone1/prod/prodimage:${{env.version}}
           resourceGroup: grp2
           containerAppEnvironment: managedEnvironment-grp2-860a
 
