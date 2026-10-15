@@ -38,7 +38,7 @@ jobs:
       - name: container apps deployment
         uses: azure/container-apps-deploy-action@v1
         with:
-          containerAppName: app2
+          containerAppName: app2-${{github.ref_name}}
           registryUrl: ghcr.io
           imageToDeploy: ghcr.io/foundone1/dev/sampleimage:${{inputs.version}}
           resourceGroup: grp2
