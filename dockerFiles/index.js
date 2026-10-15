@@ -3,7 +3,7 @@ const fs = require("fs")
 const path = require("path")
 const axios = require("axios")
 const ejs = require("ejs")
-let val = 0
+let val = 1
 
 const ENVIRONMENT = process.env.ENVIRONMENT
 
