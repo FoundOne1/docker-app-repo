@@ -5,7 +5,7 @@ const axios = require("axios")
 const ejs = require("ejs")
 
 app.set("view engine","ejs")
-let val = 2
+let val = 1
 
 const ENVIRONMENT = process.env.ENVIRONMENT
 
