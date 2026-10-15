@@ -28,6 +28,9 @@ jobs:
           client-id: ${{secrets.CLIENT_ID}}
           tenant-id: ${{secrets.TENANT_ID}}
           subscription-id: ${{secrets.SUBSCRIPTION_ID}}
+      - name: Create resource group
+        run: |
+              az group create -n grp2 --location east-us
       - name: deploy the app
         uses: azure/container-apps-deploy-action@v1
         with:

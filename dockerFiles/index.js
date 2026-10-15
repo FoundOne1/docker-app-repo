@@ -2,11 +2,16 @@ const app = require("express")()
 const fs = require("fs")
 const path = require("path")
 const axios = require("axios")
+const ejs = require("ejs")
 
+app.set("view engine","ejs")
+let val = 1
 
-const server = app.listen(3000,()=>{
+const ENVIRONMENT = process.env.ENVIRONMENT
+
+const server = app.listen(80,()=>{
     console.log("app is listening...")
-    // client = axios.get("http://localhost:3000/health")
+    console.log(process.env)
 })
 
 app.use("/health",(req,res,next)=>{
@@ -16,7 +21,9 @@ app.use("/health",(req,res,next)=>{
     next("route")
 })
 app.get("/",(req,res)=>{
-    res.send("You are connected!!")
+    res.render('index',{
+        environment: process.env.ENVIRONMENT
+    })
 })
 
 app.get("/welcome",(req,res)=>{

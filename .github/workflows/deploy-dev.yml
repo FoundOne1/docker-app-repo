@@ -8,12 +8,19 @@ on:
         required: true
       SUBSCRIPTION_ID:
         required: true
+    inputs:
+      version:
+        type: string
+        required: true
+        description: its version for image
       
       
 permissions:
   id-token: write
   packages: read
   contents: write
+env:
+  ENVIRONMENT: ${{github.ref_name == 'main' && 'PROD' || 'DEV'}}
 
 jobs:
   login-deploy:
@@ -22,19 +29,26 @@ jobs:
       - name: login to azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.CLIENT_ID }}
+          client-id: ${{ secrets.CLIENT_ID_FEATURE }}
           tenant-id: ${{ secrets.TENANT_ID }}
           subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
+      - name: Create resource group
+        run: |
+              az group create -n grp2 --location eastus
       - name: container apps deployment
         uses: azure/container-apps-deploy-action@v1
         with:
-          containerAppName: app2
+          containerAppName: app2-dev
           registryUrl: ghcr.io
-          imageToDeploy: ghcr.io/foundone1/dev/sampleimage:v2
+          imageToDeploy: ghcr.io/foundone1/dev/devimage:${{inputs.version}}
           resourceGroup: grp2
           containerAppEnvironment: managedEnvironment-grp2-860a
           registryUsername: ${{github.actor}}
           registryPassword: ${{secrets.GITHUB_TOKEN}}
+          ingress: external
+          targetPort: 80
+          environmentVariables: |
+              ENVIRONMENT=${{env.ENVIRONMENT}}
 
 
 
