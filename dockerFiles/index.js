@@ -11,6 +11,7 @@ const ENVIRONMENT = process.env.ENVIRONMENT
 
 const server = app.listen(80,()=>{
     console.log("app is listening...")
+    console.log(process.env)
 })
 
 app.use("/health",(req,res,next)=>{
