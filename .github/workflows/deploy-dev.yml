@@ -40,7 +40,7 @@ jobs:
         with:
           containerAppName: app2-${{github.ref_name}}
           registryUrl: ghcr.io
-          imageToDeploy: ghcr.io/foundone1/${{github.ref_name}}/sampleimage:${{inputs.version}}
+          imageToDeploy: ghcr.io/foundone1/${{github.ref_name}}/devimage:${{inputs.version}}
           resourceGroup: grp2
           containerAppEnvironment: managedEnvironment-grp2-860a
           registryUsername: ${{github.actor}}
