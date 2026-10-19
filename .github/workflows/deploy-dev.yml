@@ -47,9 +47,8 @@ jobs:
           registryPassword: ${{secrets.GITHUB_TOKEN}}
           ingress: external
           targetPort: 80
-          environmentVariables: |
-              ENVIRONMENT=${{env.ENVIRONMENT}}
-              APP_VERSION=${{inputs.version}}
+          environmentVariables: ENVIRONMENT=${{env.ENVIRONMENT}} APP_VERSION=${{inputs.version}}
+              
 
 
 
