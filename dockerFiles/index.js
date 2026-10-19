@@ -39,6 +39,6 @@ app.get("/api/status", (req, res) => {
     res.json({
         status: "up",
         environment: ENVIRONMENT,
-        version: VERSION,
+        version: VERSION
     })
 })
