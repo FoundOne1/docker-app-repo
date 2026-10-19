@@ -5,7 +5,7 @@ const axios = require("axios")
 const ejs = require("ejs")
 
 app.set("view engine","ejs")
-let val = 1
+let val = 0
 
 const ENVIRONMENT = process.env.ENVIRONMENT
 const VERSION = (process.env.APP_VERSION || "unknown").slice(0, 7)
