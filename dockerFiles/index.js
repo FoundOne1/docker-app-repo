@@ -8,10 +8,12 @@ app.set("view engine","ejs")
 let val = 1
 
 const ENVIRONMENT = process.env.ENVIRONMENT
+const VERSION = (process.env.APP_VERSION || "unknown").slice(0, 7)
 
 const server = app.listen(80,()=>{
     console.log("app is listening...")
     console.log(process.env)
+    console.log("environment: " + ENVIRONMENT + ", version: " + VERSION)
 })
 
 app.use("/health",(req,res,next)=>{
