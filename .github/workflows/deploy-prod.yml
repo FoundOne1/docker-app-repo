@@ -1,8 +1,10 @@
 name: production deployment
 description: deploy the dev app to the production
 on:
-  pull_request:
+  push: 
     branches: [main]
+    paths:
+      - "dockerFiles/**"
   workflow_dispatch:
 
 permissions:
