@@ -116,7 +116,7 @@
             <div class="card">
                 <h2>Health</h2>
                 <p id="status" class="muted">Checking...</p>
-                <p id="uptime" class="muted"></p>
+                <!--<p id="uptime" class="muted"></p> -->
             </div>
 
             <div class="card">
@@ -154,7 +154,7 @@
 
     <script>
         const statusEl = document.getElementById('status')
-        const uptimeEl = document.getElementById('uptime')
+        //const uptimeEl = document.getElementById('uptime')
 
         async function checkHealth() {
             try {
@@ -163,11 +163,11 @@
                 const data = await res.json()
                 statusEl.textContent = 'UP ✅'
                 statusEl.className = 'success'
-                uptimeEl.textContent = 'Uptime: ' + data.uptimeSeconds + 's'
+                //uptimeEl.textContent = 'Uptime: ' + data.uptimeSeconds + 's'
             } catch (e) {
                 statusEl.textContent = 'DOWN ❌'
                 statusEl.className = 'down'
-                uptimeEl.textContent = ''
+                //uptimeEl.textContent = ''
             }
         }
 
