@@ -33,7 +33,7 @@ jobs:
           docker tag myapp ghcr.io/foundone1/dev/devimage:${{inputs.version}}
           docker tag myapp ghcr.io/foundone1/dev/devimage:latest
           docker push ghcr.io/foundone1/dev/devimage:${{inputs.version}}
-          docker tag myapp ghcr.io/foundone1/dev/devimage:latest
+          docker push myapp ghcr.io/foundone1/dev/devimage:latest
           if [ $? == 0 ]; then
           echo "res=success" >> $GITHUB_OUTPUT
           else
