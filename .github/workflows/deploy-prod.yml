@@ -47,6 +47,9 @@ jobs:
           imageToDeploy: ghcr.io/foundone1/prod/prodimage:${{env.version}}
           resourceGroup: grp2
           containerAppEnvironment: managedEnvironment-grp2-860a
+          ingress: external
+          targetPort: 80
+          environmentVariables: ENVIRONMENT=PROD APP_VERSION=${{env.version}}
 
         
       
