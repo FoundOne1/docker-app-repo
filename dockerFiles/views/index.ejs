@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,24 +84,13 @@
             margin-top: 30px;
             background: #1e293b;
         }
-
-        .down {
-            color: #ef4444;
-            font-weight: bold;
-        }
-
-        .muted {
-            color: #94a3b8;
-            font-size: 0.85rem;
-            margin-top: 6px;
-        }
     </style>
 </head>
 <body>
 
     <div class="header">
         <h1>🚀 CI/CD Automation Dashboard</h1>
-        <p>GitHub Actions | Docker | Azure Container Apps</p>
+        <p>GitHub Actions | Azure | Docker | Kubernetes</p>
     </div>
 
     <div class="container">
@@ -110,23 +99,22 @@
 
             <div class="card">
                 <h2>Application</h2>
-                <p>DevOps App</p>
+                <p>DevOps Sample App</p>
             </div>
 
             <div class="card">
-                <h2>Health</h2>
-                <p id="status" class="muted">Checking...</p>
-                <!--<p id="uptime" class="muted"></p> -->
+                <h2>Build Status</h2>
+                <p class="success">SUCCESS ✅</p>
             </div>
 
             <div class="card">
                 <h2>Version</h2>
-                <p><%= version %></p>
+                <p>v1.0.0</p>
             </div>
 
             <div class="card">
                 <h2>Environment</h2>
-                <p><%= environment %></p>
+                <p>Production</p>
             </div>
 
         </div>
@@ -151,29 +139,6 @@
     <footer>
         Automated using GitHub Actions and Azure
     </footer>
-
-    <script>
-        const statusEl = document.getElementById('status')
-        //const uptimeEl = document.getElementById('uptime')
-
-        async function checkHealth() {
-            try {
-                const res = await fetch('/api/status')
-                if (!res.ok) throw new Error('bad response')
-                const data = await res.json()
-                statusEl.textContent = 'UP ✅'
-                statusEl.className = 'success'
-                //uptimeEl.textContent = 'Uptime: ' + data.uptimeSeconds + 's'
-            } catch (e) {
-                statusEl.textContent = 'DOWN ❌'
-                statusEl.className = 'down'
-                //uptimeEl.textContent = ''
-            }
-        }
-
-        checkHealth()
-        setInterval(checkHealth, 5000)
-    </script>
 
 </body>
 </html>
