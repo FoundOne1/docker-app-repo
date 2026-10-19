@@ -5,19 +5,19 @@ on:
  workflow_dispatch:
  workflow_call:
 env:
- port: 3000
+ port: 80
 jobs:
   test:
    runs-on: ubuntu-latest
    services:
      dev-app:
-      image: ghcr.io/foundone1/dev/sampleimage:v2
+      image: ghcr.io/foundone1/dev/devimage:${{github.sha}}
       ports:
-        - 3000:3000
+        - 80:80
    steps:
     - name: test the container-app
       run: |
        server=$(hostname)
        sleep 5
-       curl -v http://$server:3000/health
+       curl -v http://$server:80/health
       
