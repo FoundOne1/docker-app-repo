@@ -22,7 +22,7 @@ A CI/CD pipeline for a Dockerized Node.js app, built with **GitHub Actions** and
 ```bash
 cd dockerFiles
 docker build -t myapp .
-docker run -p 8080:80 -e ENVIRONMENT=DEV -e APP_VERSION=abc1234567 myapp
+docker run -p 8080:80 -e ENVIRONMENT=DEV -e APP_VERSION=latest myapp
 ```
 
 Open http://localhost:8080 🎉
