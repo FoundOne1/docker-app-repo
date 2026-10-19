@@ -24,8 +24,8 @@ jobs:
           registry: ghcr.io
       - name: pull and tag the image
         run: |
-          docker pull ghcr.io/foundone1/dev/sampleimage:latest
-          docker tag ghcr.io/foundone1/dev/sampleimage:latest ghcr.io/foundone1/prod/prodimage:latest
+          docker pull ghcr.io/foundone1/dev/devimage:latest
+          docker tag ghcr.io/foundone1/dev/devimage:latest ghcr.io/foundone1/prod/prodimage:latest
       - name: push the prod image
         run: |
           docker push ghcr.io/foundone1/prod/prodimage:latest
