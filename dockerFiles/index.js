@@ -34,3 +34,11 @@ app.get("/health",(req,res)=>{
     res.send("App is up and running")
     // server.close(()=>{process.exit(0)})
 })
+
+app.get("/api/status", (req, res) => {
+    res.json({
+        status: "up",
+        environment: ENVIRONMENT,
+        version: VERSION,
+    })
+})
