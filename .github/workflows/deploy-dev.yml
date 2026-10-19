@@ -49,7 +49,7 @@ jobs:
           targetPort: 80
           environmentVariables: |
               ENVIRONMENT=${{env.ENVIRONMENT}}
-              APP_VERIOSN=${{inputs.version}}
+              APP_VERSION=${{inputs.version}}
 
 
 
