@@ -1,8 +1,10 @@
 name: production deployment
 description: deploy the dev app to the production
 on:
-  pull_request:
+  push: 
     branches: [main]
+    paths:
+      - "dockerFiles/**"
   workflow_dispatch:
 
 permissions:
@@ -10,7 +12,7 @@ permissions:
   contents: write
   id-token: write
 env:
-  version: ${{github.event.pull_request.head.sha}}
+  version: ${{github.sha}}
 
 jobs:
   tag-prod-container:
@@ -24,8 +26,8 @@ jobs:
           registry: ghcr.io
       - name: pull and tag the image
         run: |
-          docker pull ghcr.io/foundone1/dev/devimage:${{env.version}}
-          docker tag ghcr.io/foundone1/dev/devimage:${{env.version}} ghcr.io/foundone1/prod/prodimage:${{env.version}}
+          docker pull ghcr.io/foundone1/dev/devimage:latest
+          docker tag ghcr.io/foundone1/dev/devimage:latest ghcr.io/foundone1/prod/prodimage:${{env.version}}
       - name: push the prod image
         run: |
           docker push ghcr.io/foundone1/prod/prodimage:${{env.version}}
