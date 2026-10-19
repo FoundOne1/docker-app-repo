@@ -1,0 +1,16 @@
+---
+
+name: Login workflow
+on:
+  push:
+    branches: login
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the repo
+        uses: actions/checkout@v4
+        
+    
+    
