@@ -24,7 +24,7 @@ app.use("/health",(req,res,next)=>{
 })
 app.get("/",(req,res)=>{
     res.render('index',{
-        environment: process.env.ENVIRONMENT
+        environment: process.env.ENVIRONMENT,
         version: VERSION
     })
 })
